@@ -1,3 +1,9 @@
+const { exec } = require("child_process");
+
+exec("git pull --rebase", (err, stdout) => {
+    console.log(stdout);
+});
+
 require("dotenv").config();
 
 const { Client, GatewayIntentBits } = require("discord.js");
