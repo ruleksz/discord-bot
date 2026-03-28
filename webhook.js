@@ -28,7 +28,7 @@ app.post("/github", async (req, res) => {
             });
         }
 
-        // REPO CREATED
+        // REPO CREATED (GitHub App)
         if (event === "installation_repositories") {
             const channel = await client.channels.fetch(
                 process.env.REPO_CHANNEL
@@ -36,11 +36,23 @@ app.post("/github", async (req, res) => {
 
             payload.repositories_added.forEach(repo => {
                 channel.send(`
-📦 Repository Created
+📦 **Repository Created**
 Name: ${repo.name}
 URL: ${repo.html_url}
 `);
             });
+        }
+
+        if (event === "repository") {
+            const channel = await client.channels.fetch(
+                process.env.REPO_CHANNEL
+            );
+
+            channel.send(`
+📦 Repository Created
+Name: ${payload.repository.name}
+URL: ${payload.repository.html_url}
+`);
         }
 
         // PULL REQUEST
