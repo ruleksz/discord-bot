@@ -5,6 +5,8 @@ app.use(express.json());
 
 app.post("/github", async (req, res) => {
     const event = req.headers["x-github-event"];
+    console.log("EVENT:", event);
+    console.log("BODY:", req.body);
     const payload = req.body;
 
     const client = global.discordClient;
