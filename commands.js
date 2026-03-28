@@ -49,7 +49,7 @@ async function handleCommands(interaction) {
             process.env.LOG_CHANNEL
         );
 
-        channel.send(`Developer Log:\n${'```', text, '```'}`);
+        channel.send(`Developer Log:\n${text}`);
         interaction.reply({ content: "Logged ✅", ephemeral: true });
     }
 
@@ -58,7 +58,7 @@ async function handleCommands(interaction) {
             process.env.TODO_CHANNEL
         );
 
-        channel.send(`📌 TODO:\n${'```', text, '```'}`);
+        channel.send(`📌 TODO:\n${text}`);
         interaction.reply({ content: "Todo added ✅", ephemeral: true });
     }
 
