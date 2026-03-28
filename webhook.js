@@ -29,17 +29,18 @@ app.post("/github", async (req, res) => {
         }
 
         // REPO CREATED
-        if (event === "repository") {
+        if (event === "installation_repositories") {
             const channel = await client.channels.fetch(
                 process.env.REPO_CHANNEL
             );
 
-            channel.send(`
-📦 **Repository Created**
-Name: ${payload.repository.name}
-Visibility: ${payload.repository.visibility}
-URL: ${payload.repository.html_url}
+            payload.repositories_added.forEach(repo => {
+                channel.send(`
+📦 Repository Created
+Name: ${repo.name}
+URL: ${repo.html_url}
 `);
+            });
         }
 
         // PULL REQUEST
