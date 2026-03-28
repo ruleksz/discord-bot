@@ -38,10 +38,10 @@ app.post("/github", async (req, res) => {
 
             payload.repositories_added.forEach(repo => {
                 channel.send(`
-📦 **Repository Created**
-Name: ${repo.name}
-URL: ${repo.html_url}
-`);
+                📦 **Repository Created**
+                Name: ${repo.name}
+                URL: ${repo.html_url}
+                `);
             });
         }
 
