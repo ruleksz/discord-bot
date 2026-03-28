@@ -58,7 +58,7 @@ async function handleCommands(interaction) {
             process.env.TODO_CHANNEL
         );
 
-        channel.send(`📌 TODO\n${text}`);
+        channel.send(`📌 TODO\n${'```', text, '```'}`);
         interaction.reply({ content: "Todo added ✅", ephemeral: true });
     }
 
